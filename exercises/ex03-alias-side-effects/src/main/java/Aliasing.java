@@ -3,16 +3,16 @@ import java.util.Arrays;
 /**
  * Exercise (Chapter 1: Introduction to Java) — aliasing, references vs.
  * primitives, and side effects.
- *
+ * <p>
  * Arrays are REFERENCE types: when you pass an array to a method, the method
  * receives an alias to the SAME array, so any change it makes is visible to the
  * caller. (Primitives like int are copied instead, so a method cannot change a
  * caller's int by reassigning its parameter — which is why the methods that
  * "change" something here either modify an array in place or return a value.)
- *
+ * <p>
  * Complete both methods below, then run the tests to see the difference.
  * Edit only this file — do not change the test file.
- *
+ * <p>
  * Relevant reading: 1.7. Aliases and 1.9. Parameters.
  */
 public class Aliasing {
@@ -39,7 +39,7 @@ public class Aliasing {
      * @param amount the value to add to each element
      */
     public static void addInPlace(int[] arr, int amount) {
-        for (int i = 0; i < arr.length; i++){
+        for (int i = 0; i < arr.length; i++) {
             arr[i] += amount;
         }
     }
@@ -54,7 +54,7 @@ public class Aliasing {
      */
     public static int[] addCopy(int[] arr, int amount) {
         int[] ans = new int[arr.length];
-        for (int i = 0; i < arr.length; i++){
+        for (int i = 0; i < arr.length; i++) {
             ans[i] = arr[i] + amount;
         }
         return ans;

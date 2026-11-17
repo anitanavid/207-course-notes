@@ -1,11 +1,11 @@
 /**
  * Exercise (Chapter 1: Introduction to Java) — arrays and for-loops.
- *
+ * <p>
  * Your task is to complete the oddSum method below.
- *
- *
+ * <p>
+ * <p>
  * You only need to edit the body of oddSum — do not change OddSumTest.
- *
+ * <p>
  * Relevant readings: 1.6. Arrays and 1.8.2. for Loops.
  */
 public class OddSum {
@@ -27,7 +27,7 @@ public class OddSum {
      */
     public static int oddSum(int[] arr) {
         int sum = 0;
-        for (int i = 1; i < arr.length; i += 2){
+        for (int i = 1; i < arr.length; i += 2) {
             sum += arr[i];
         }
         return sum;

@@ -1,9 +1,9 @@
 /**
  * Exercise (Chapter 1: Introduction to Java) — while loops and integer
  * arithmetic.
- *
+ * <p>
  * Complete {@link #digitSum(int)} below using a while loop.
- *
+ * <p>
  * Relevant reading: 1.8.3. while Loops (and 1.2. Variables and Types).
  */
 public class DigitSum {
@@ -25,7 +25,7 @@ public class DigitSum {
             n = Math.abs(n);
         }
         int ans = 0;
-        while (n > 0){
+        while (n > 0) {
             ans += n % 10;
             n = n / 10;
         }
