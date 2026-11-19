@@ -1,24 +1,8 @@
+
 @startuml
 skinparam dpi 150
 skinparam classAttributeIconSize 0
 hide empty members
-
-' Your task (Chapter 8, Question 1): draw the UML class diagram for the library
-' specification — items, books, DVDs, reference-only items, members, librarians,
-' and holds.
-'
-' Define each type as a box, then connect them with the right arrows. One box
-' (Item) is filled in as an example — decide on the rest yourself. There is more
-' than one defensible answer.
-'
-' PlantUML cheat-sheet:
-'   interface Name { + method() : Type }
-'   abstract class Name { # field : Type }
-'   class Name { - field : Type }
-'   Parent    <|-- Child    ' generalization: Child extends Parent
-'   Interface <|.. Class    ' realization:    Class implements Interface
-' (Putting the parent/interface on the LEFT of the arrow keeps it on top, which
-'  is the convention used in these notes.)
 
 abstract class Item {
   - title : String
@@ -27,19 +11,56 @@ abstract class Item {
   + getCatalogueNumber() : String
 }
 
-' TODO: add boxes for Book and DVD. What differs between them — a whole class,
-'       or just the value of a loan-period field?
+interface Borrowable {
+  + borrow() : void
+  + returnItem() : void
+}
 
-' TODO: reference-only items cannot be borrowed at all. Decide how to say that
-'       in the diagram: a subclass, or an interface (e.g. "Borrowable") that
-'       only some items realize?
+class Book {
+  - author : String
+  - loanPeriod : int
+}
 
-' TODO: add Member and Librarian. What do they have in common? Add the common
-'       supertype if you think one is warranted.
+class DVD {
+  - duration : int
+  - loanPeriod : int
+}
 
-' TODO: add whatever represents a hold, and connect it to the classes that need
-'       to know about it.
+class ReferenceItem {
+  - location : String
+}
 
-' TODO: add the arrows between all of your types.
+abstract class Person {
+  - name : String
+  - id : String
+}
+
+class Member {
+  + borrowItem(item : Borrowable) : void
+  + placeHold(item : Item) : void
+}
+
+class Librarian {
+  + addItem(item : Item) : void
+  + removeItem(item : Item) : void
+}
+
+class Hold {
+  - holdDate : String
+  - status : String
+}
+
+Item <|-- Book
+Item <|-- DVD
+Item <|-- ReferenceItem
+
+Borrowable <|.. Book
+Borrowable <|.. DVD
+
+Person <|-- Member
+Person <|-- Librarian
+
+Member "1" -- "0..*" Hold : places
+Item "1" -- "0..*" Hold : reserved for
 
 @enduml
